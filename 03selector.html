@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 선택자</title>
+    <style>
+        /*후손 선택자 : "상위 선택자" "하위 선택자"{속성:속성값}*/
+        div span {color: orange; font-weight: bold}
+        /*자손 선택자 : "상위 선택자" > "하위 선택자"{속성:속성값}*/
+        /*현재 견본은 태그가 겹치는 관계로 bold가 사라지지 않음*/
+        div > span span {color: initial; font-style: italic; font-size: 30px}
+
+        /*자손에만 스타일을 적용했지만 후손의 스타일을 지정하지 않으면 전부 다 적용됨*/
+        ul  li {color: deeppink; font-style: normal}
+        ul > ul li {color: orange; font-style: italic}
+
+        /*그룹 선택자 : "선택자1", "선택자2"{속성:속성값}*/
+        span, li {background: ivory;}
+        /*동적 의사 선택자 : "선택자":link, visited, hover, active, focus 등{속성:속성값}*/
+        a:link {color:black; text-decoration: none;}
+        a:visited {color:black; text-decoration: none;}
+        a:hover {color:red; text-decoration: underline}
+        a:active {color:white;}
+        input:hover{background: aliceblue}
+        input:focus{background: black;color: white}
+        /*동적 의사 선택자 : "선택자":checked, enabled, disabled 등{속성:속성값}*/
+        /*"A"+"B"는 A 바로 다음에 있는 B를 의미함*/
+        input:checked{box-shadow: 0 0 0 3px hotpink}
+        input:checked+label{color: firebrick; background: yellow;}
+
+        /*구조적 의사 선택자 : "선택자":first-child, last-child, nth-child, nth-of-type 등{속성:속성값}*/
+        #maker>li{background: none; color: black;}
+        #maker>li:first-child{background: none; color: red;}
+        #maker>li:last-child{background: none; color: green;}
+        #maker>li:nth-child(2){background: none; color: brown;}
+
+    </style>
+</head>
+<body>
+<h1>CSS 선택자</h1>
+<h2>조합(결합) 선택자</h2>
+<p>
+  스타일을 적용할 대상이 하나 이상인 경우에 사용하는 선택자
+</p>
+<img src="img/combine.png" alt="html 문서 트리 구조">
+<p>
+  후손(descendant) 선택자 : 해당 요소 아래에 있는 모든 하위 요소들을 대상으로 하는 선택자
+</p>
+<div>
+    <span>모든 국민은 양심의 자유를 가진다.
+        <span>군인은 현역을 면한 후가 아니면 국무위원으로 임명될 수 없다.</span>
+        <span>대법관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다.</span>
+        <span>대통령은 헌법과 법률이 정하는 바에 의하여 공무원을 임면한다.</span>
+    </span>
+    <span>모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다.</span>
+    <span>공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. </span>
+</div>
+<p>
+  자손(child) 선택자 : 해당 요소 직계 아래에 있는 하위 요소들을 대상으로 하는 선택자
+</p>
+<ul>
+    <li>한식</li>
+        <ul>
+            <li>비빔밥</li>
+            <li>불고기</li>
+            <li>순살치킨</li>
+        </ul>
+    <li>양식</li>
+    <li>일식</li>
+</ul>
+<p>
+  그룹 선택자 : 여러 선택자를 혼합해서 요소들을 지정할때 사용하는 선택자
+</p>
+<h2>가상(pseudo) 선택자</h2>
+<p>
+    특정 태그에 미리 정의된 선택자를 부르는 말
+</p>
+<p>
+    동적의사 클래스 선택자 : 마우스 이벤트에 의해 스타일을 다르게 적용하고 싶을 때 사용하는 선택자
+</p>
+<a href="#">링크1</a><br>
+<a href="#">링크2</a><br>
+<br>
+<input type="text" value="click me"><br>
+<input type="password">
+<p>
+    상태의사 클래스 선택자 : 폼의 상태에 따라 스타일을 다르게 적용하고 싶을 때 사용하는 선택자
+</p>
+<div><input type="radio" name="gender" checked><label>남자</label></div>
+<div><input type="radio" name="gender" ><label>여자</label></div>
+<p>
+    구조적 의사 클래스 선택자 : html 요소의 계층적 구조에서 특정 위치에 있는 요소를 선택할 때 사용하는 선택자
+</p>
+
+<ul id="maker">
+    <li>삼성</li>
+    <li>애플</li>
+    <li style="text-decoration: line-through">LG</li>
+    <li>구글</li>
+</ul>
+</body>
+</html>
