@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS 고급 텍스트 관련 속성</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /*텍스트 처리 : nowrap(칸에서 빠져나와도 줄바꿈을 무시),
+    pre(연속된 공백 등의 요소를 그대로 표시함) 등이 있음*/
+    #space p{width: 200px; height: 100px; border: 1px solid blue; padding: 50px; margin: 50px}
+    #space p:first-child{white-space: nowrap}
+    #space p:nth-child(2){white-space: pre}
+    #space p:nth-child(3){white-space: pre-wrap}
+
+    /*위에서 계속됨. overflow(넘치면 그냥 안보이게 만들어버림),
+    text-overflow는 overflow 속성값이 hidden, scroll, auto일 때만 적용할 수 있음
+    text-overflow:ellipsis(넘치면 말줄임으로 표현함)*/
+    #overflow p{width: 200px; height: 100px; border: 1px solid red; padding: 50px; margin: 50px}
+    #overflow p:first-child{white-space: nowrap; overflow: hidden}
+    #overflow p:nth-child(2){white-space: nowrap; overflow: hidden; text-overflow: ellipsis}
+    /*overflow:hidden과 같은 효과*/
+    #overflow p:nth-child(3){white-space: nowrap; overflow: hidden; text-overflow: clip}
+    /*text-shadow : 선택자{그림자수평오프셋 그림자수직오프셋 블러효과 그림자색상}*/
+    #shadow p{font-size: 50px; font-weight: bold}
+    #shadow p:first-child{text-shadow: 5px 5px 0 gray}
+    #shadow p:nth-child(2){text-shadow: 5px 5px 5px gray; letter-spacing: 5px}
+    #shadow p:nth-child(3){color: white ;text-shadow: -5px -5px 5px gray}
+</style>
+</head>
+<body>
+<h1>CSS 고급 텍스트 관련 속성</h1>
+<h2>white-space</h2>
+<p>텍스트의 공백, 들여쓰기, 줄바꿈에 대한 처리를 설정</p>
+<div id="space">
+  <p>명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는          대법원은 이를 최종적으로 심사할 권한을 가진다.</p>
+  <p>명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는          대법원은 이를 최종적으로 심사할 권한을 가진다.</p>
+  <p>명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는          대법원은 이를 최종적으로 심사할 권한을 가진다.</p>
+</div>
+<h2>text-overflow</h2>
+<p>특정 영역을 벗어나 줄바꿈이 되지 않은 텍스트에 대한 처리방법</p>
+<p>white-space 속성과 함께 사용해야 함</p>
+<div id="overflow">
+  <p>명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는           대법원은 이를 최종적으로 심사할 권한을 가진다.</p>
+  <p>명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는           대법원은 이를 최종적으로 심사할 권한을 가진다.</p>
+  <p>명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는           대법원은 이를 최종적으로 심사할 권한을 가진다.</p>
+</div>
+<h2>text-shadow</h2>
+<p>텍스트에 그림자 효과를 부여함</p>
+<div id="shadow">
+  <p>사면·감형 및 복권에 관한 사항은 법률로 정한다.</p>
+  <p>재판의 전심절차로서 행정심판을 할 수 있다.</p>
+  <p>모든 국민은 법 앞에 평등하다.</p>
+</div>
+</body>
+</html>
