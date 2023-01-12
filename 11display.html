@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SCC display 관련 속성</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+  <style>
+    /*span 태그는 inline이라 width 등이 먹히지 않음*/
+    /*display: block로 속성을 변환할 수 있음*/
+    /*하지만 그냥 block로 해버리면 줄바꿈이 일어나므로*/
+    /*둘 모두의 속성을 가진 inline-block으로 바꿔줌*/
+    #display p:first-child span{
+      background: red; color: white; font-weight: bold;
+      width: 100px; text-align: center;
+      display: inline-block;
+    /*display: none은 요소와 내용이 차지한 영역까지 지움*/
+    }
+    #display p:nth-child(2) span{
+      display: none;
+    }
+    /*visibility: hidden은 요소만 지우고 영역은 남김*/
+    /*display와 달리 visibility는 컨탠츠를 출력하는지 여부만 따짐*/
+    /*hidden, visible*/
+    #display p:last-child span{
+      visibility: hidden;
+    }
+
+
+    #opacity P{width: 150px; height: 150px;}
+    #opacity p:first-child {
+      background: red;
+    }
+    #opacity p:first-child:hover{
+      opacity: 0.3;
+    }
+    #opacity p:nth-child(2){
+      background: blue;
+    }
+    #opacity p:nth-child(2):hover{
+      opacity: 0.7;
+    }
+    #opacity p:last-child{
+      background: black;
+    }
+    #opacity p:last-child:hover{
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<h1>SCC display 관련 속성</h1>
+<h2>개요</h2>
+<p>html 요소가 브라우저에 의해 어떻게 보여질지 결정하는 속성</p>
+<p>웹 페이지의 레이아웃을 정할 때 자주 사용하는 속성</p>
+<p>대부분의 html 요소는 block 또는 inline 중 하나로 결정되어 브라우저에 보여짐</p>
+<p>하지만, 웹 페이지 레이아웃 구성 시 요소의 속성을 바꿔야 할 때가 존재하는데</p>
+<p>이 때 display 속성으로 바꿀 수 있음</p>
+<div id="display">
+  <p>시간은 <span>금</span>이라구, 친구!!</p>
+  <p>시간은 <span>금</span>이라구, 친구!!</p>
+  <p>시간은 <span>금</span>이라구, 친구!!</p>
+</div>
+<h2>visibility</h2>
+<p>요소를 화면상에 표시할지 여부 지정</p>
+<p>단, display 속성과는 다름</p>
+<h2>opacity</h2>
+<p>요소의 투명도를 지정. 값의 범위는 0 ~ 1 사이(소수)</p>
+<div id="opacity">
+  <p></p>
+  <p></p>
+  <p></p>
+</div>
+</body>
+</html>

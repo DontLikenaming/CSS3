@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS position 관련</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+      /*position 속성이 명시되지 않으면 기본적으로 static이며
+      top, left, right, bottom 속성은 적용되지 않음*/
+      #box1{width: 150px; height: 150px; background: yellow; left:100px;}
+      #box2{width: 200px; height: 200px; background: red;}
+      /*box3은 box2의 너비 내에 배치됨*/
+      #box3{
+        width: 100px; height: 100px; background: greenyellow;
+        border: 1px solid black; line-height: 600%;
+      }
+      /*absolute 배치*/
+      #box4{
+        width: 250px; height: 250px; background: violet;
+        position: absolute; top:50px; left:50px; opacity: 0.4;}
+      /*최상위 요소(<body>)의 최상위 좌표(페이지 좌상단) 기준으로 배치되지만
+      스크롤을 따라가진 않음*/
+      #box5{
+        width: 250px; height: 250px; background: cyan;
+        position: absolute; bottom:50px; right:50px;
+      }
+      /*상위요소의 position을 relative로 해두면
+      하위요소의 기준점이 해당 상위요소로 지정됨*/
+      #box6{
+        width: 250px; height: 250px; background: peachpuff;
+        position: relative;
+      }
+      #box7{
+        width: 150px; height: 150px; background: gold;
+        position: absolute; top: 50px; left:50px
+      }
+      /*relative 배치*/
+      #box8{
+        width: 200px; height: 200px;
+        background: darkmagenta; color: white;
+      }
+      /*상위 요소에 포지션이 없는 상태에서
+      relative 포지션이 적용되면
+      상위 요소 기준
+      좌측 최하단으로 배치됨*/
+      #box9{
+        width: 200px; height: 200px;
+        background: darkolivegreen; color: white;
+        top:50px; left:50px;
+        position: relative;
+      }
+      /*부모요소의 자식요소는
+      부모요소의 위치가 바뀌면 같이 위치가 변함*/
+      #box10{
+        width: 200px; height: 200px;
+        background: darkgoldenrod; color: white;
+        margin: 100px;
+      }
+      #box11{
+        width: 200px; height: 200px;
+        background: darksalmon; color: white;
+        top:50px; left:50px;
+        position: relative;
+      }
+      #cart{
+        width: 100px; height: 200px;
+        background: darkviolet; color: white;
+        top:30%; right:30%;
+        position: fixed; opacity: 0.3;
+      }
+      #sticky{
+          width: 200px; height: 100px;
+          background: lightyellow;
+          position: sticky;
+          top:30px; opacity: 0.7;
+      }
+      #z1{
+          width: 400px; height: 400px;
+          border: 1px dashed black;
+          position: relative;
+      }
+      #z2, #z3, #z4{
+          width: 200px; height: 200px;
+          position: absolute;
+      }
+      #z2{
+          background: mediumpurple;
+          top: 50px; left:50px;
+          z-index: 3;
+      }
+      #z3{
+          background: orange;
+          top: 100px; left:100px;
+          z-index: 1;
+      }
+      #z4{
+          background: skyblue;
+          top: 150px; left:150px;
+          z-index: 2;
+      }
+      #overflow p{
+          width: 150px; height: 150px;
+          border: 1px dashed red; padding: 10px;
+          background: beige;
+      }
+      #overflow p:first-child{
+          overflow: hidden;
+      }
+      #overflow p:nth-child(2){
+          overflow: scroll;
+      }
+      #overflow p:last-child{
+          overflow: auto;
+      }
+    </style>
+</head>
+<body>
+<h1>CSS position 관련</h1>
+<h2>개요</h2>
+<p>지금까지는 margin/padding 또는 인라인/블록 요소의 특성에 의해<br>
+  부분적으로 요소의 위치를 지정할 수 있었음.</p>
+<p>반면, position이라는 속성을 이용하면 html 요소들의 위치를 좌표등올 결정할 수 있음.</p>
+<p>position은 static, absolute, relative, fixed, sticky, z-index 등의 속성값을 가지며,<br>
+  그 후, top/left/right/bottom의 속성을 부여해서 해당 속성값만큼 이동할 수 있음.</p>
+<h2>static position</h2>
+<p>기본적인 요소 배치순서에 따라 위->아래, 왼쪽->오른쪽으로 배치되며,<br>
+부모-자식 관계의 요소에서 자식요소는 부모요소에 따라 배치됨.</p>
+<div id="box1">box#1</div>
+<div id="box2">box#2
+  <div id="box3">box#3</div>
+</div>
+<h2>absolute position</h2>
+<p>조상요소(&lt;body&gt; 태그) 또는 부모요소를 기준으로 속성값만큼 요소를 이동시켜 배치됨.</p>
+<p>단, 부모요소를 기준으로 하위요소를 배치하려면 부모요소의 position은 relative여야 함.</p>
+<div id="box4">box#4</div>
+<div id="box5">box#5</div>
+<div id="box6">box#6
+  <div id="box7">box#7</div>
+</div>
+<h2>relative position</h2>
+<p>자기 자신이 있는 위치를 기준으로 속성값만큼 요소를 이동시켜 배치됨.</p>
+<div id="box8">box#8</div>
+<div id="box9">box#9</div>
+<div id="box10">box#10
+  <div id="box11">box#11</div>
+</div>
+<h2>fixed position</h2>
+<p>뷰포트(웹페이지 가시영역)를 기준으로 top/left/right/bottom 만큼 요소를 이동시켜 배치.</p>
+<p>브라우저를 스크롤 하더라도 뷰포트의 특정위치에 요소가 배치됨.</p>
+<div id="cart">box#12</div>
+<h2>sticky position</h2>
+<p>relative position과 fixed position을 적절히 조합해서 만든 position.</p>
+<p>평소에는 relative 방식으로 요소를 처리하다가<br>
+    설정해둔 지점을 뷰포트가 지나칠 때 fixed처럼 화면에 고정시킴.</p>
+<div id="sticky">box#13</div>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<p>1234567890</p>
+<h2>z-index position</h2>
+<p>요소를 배치하다보면 설정된 위치나 방식에 따라 서로 겹칠 수 있음</p>
+<p>기본적으로는 먼저 만들어진 요소가 나중에 만들어진 요소보다 밑에 배치됨</p>
+<p>요소가 쌓이는 순서를 직접 지정하여 필요에 맞게 사용 가능함</p>
+<p>z-index 값이 클수록 앞쪽에 배치됨</p>
+<div id="z1">box#14
+    <div id="z2">box#15</div>
+    <div id="z3">box#16</div>
+    <div id="z4">box#17</div>
+</div>
+<h2>overflow</h2>
+<p>자식요소가 부모요소를 벗어났을 때의 처리방법을 정의</p>
+<div id="overflow">
+    <p>국가유공자·상이군경 및 전몰군경의 유가족은 법률이 정하는 바에 의하여 우선적으로 근로의 기회를 부여받는다. 모든 국민은 직업선택의 자유를 가진다. 이 헌법시행 당시에 이 헌법에 의하여 새로 설치될 기관의 권한에 속하는 직무를 행하고 있는 기관은 이 헌법에 의하여 새로운 기관이 설치될 때까지 존속하며 그 직무를 행한다. 국민경제의 발전을 위한 중요정책의 수립에 관하여 대통령의 자문에 응하기 위하여 국민경제자문회의를 둘 수 있다. 모든 국민은 거주·이전의 자유를 가진다.</p>
+    <p>국가유공자·상이군경 및 전몰군경의 유가족은 법률이 정하는 바에 의하여 우선적으로 근로의 기회를 부여받는다. 모든 국민은 직업선택의 자유를 가진다. 이 헌법시행 당시에 이 헌법에 의하여 새로 설치될 기관의 권한에 속하는 직무를 행하고 있는 기관은 이 헌법에 의하여 새로운 기관이 설치될 때까지 존속하며 그 직무를 행한다. 국민경제의 발전을 위한 중요정책의 수립에 관하여 대통령의 자문에 응하기 위하여 국민경제자문회의를 둘 수 있다. 모든 국민은 거주·이전의 자유를 가진다.</p>
+    <p>국가유공자·상이군경 및 전몰군경의 유가족은 법률이 정하는 바에 의하여 우선적으로 근로의 기회를 부여받는다. 모든 국민은 직업선택의 자유를 가진다. 이 헌법시행 당시에 이 헌법에 의하여 새로 설치될 기관의 권한에 속하는 직무를 행하고 있는 기관은 이 헌법에 의하여 새로운 기관이 설치될 때까지 존속하며 그 직무를 행한다. 국민경제의 발전을 위한 중요정책의 수립에 관하여 대통령의 자문에 응하기 위하여 국민경제자문회의를 둘 수 있다. 모든 국민은 거주·이전의 자유를 가진다.</p>
+</div>
+</body>
+</html>
