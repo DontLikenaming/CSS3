@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Float 관련 속성</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        #box1, #box2, #box3, #box4, #box5, #box6{
+            width: 200px; height: 100px;
+        }
+        /*마진, 테두리, 여백이 없는 케이스 - 크기 정상*/
+        #box1{
+            background: red;
+        }
+        /*테두리, 여백이 있는 케이스 - 원래 사이즈에 (padding*2+border*2)가 추가됨*/
+        #box2{
+            background: yellow;
+            border: 5px solid black;
+            padding: 20px;
+        }
+        /*테두리, 마진이 있는 케이스
+        - 겉보기에는 (border*2)만 추가되었지만
+          실제 차지하는 크기는 box2와 같음*/
+        #box3{
+            background: orange;
+            border: 5px solid black;
+            margin: 20px;
+        }
+        /*마진, 테두리, 여백이 없는 케이스 - 크기 정상*/
+        #box4{
+            background: red;
+            box-sizing: border-box;
+        }
+        /*테두리, 여백이 있는 케이스 -
+        box-sizing: border-box를 적용해서 기설정한 크기를 유지함
+        단, 이 경우 내부는 그만큼 줄어들음*/
+        #box5{
+            background: yellow;
+            border: 5px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /*테두리, 마진이 있는 케이스
+        - box-sizing: border-box를 적용해도 마진에는 영향을 주지 않음*/
+        #box6{
+            background: orange;
+            border: 5px solid black;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        /*float*/
+        /*float을 적용하면 아래에 있는 요소들의 위치가 box7이 없는 것처럼
+        올라가지만 box7이 존재하기 때문에 요소의 내용은 box7에 밀려남*/
+        #box7{
+            width: 300px; height: 300px;
+            box-sizing: border-box;
+            background: yellow;
+            float: left;
+        }
+        #article1, #article2{
+            width: 600px; height: 100px;
+        }
+        /*float이 적용된 요소의 후속요소는 background가
+        float이 적용된 요소 밑으로 배치되기 때문에 경우에 따라선 보이지 않을 수 있다*/
+        #article1{
+            /*background: #b3d4fc;*/ float: left;
+        }
+        #article2{
+            background: lightgoldenrodyellow;
+        }
+        .clearfix2:after{
+            content: ""; display: block;
+            clear: both;
+        }
+
+        /*float:left - 요소를 왼쪽을 기준으로 배치*/
+        /*후속요소는 float 요소 아래에 배치됨*/
+        /*배치에 따라서는 뒤에 따라오는 요소에도 float 속성을 지정해야 함*/
+        /*float 속성으로 지정된 요소들은 기본적으로 배치될 공간이 충분하다면
+        일렬로 배치됨*/
+        /*하지만 페이지를 줄이는 등의 공간이 부족할 경우
+        요소가 아래료 내려갈 수 있는데,
+        해당 요소들을 그룹으로 묶고 적절한 너비를 지정함으로써 이를 방지할 수 있음*/
+        #wrapper{
+            width: 900px;
+        }
+        #box8{
+            width: 300px; height: 300px;
+            box-sizing: border-box;
+            background: yellow;
+            float: left;
+        }
+        #article3, #article4{
+            width: 600px; height: 100px; float: left;
+        }
+        #article3{
+            background: #b3d4fc;
+        }
+
+        #article4{
+            background: lightgoldenrodyellow;
+        }
+        .clearfix2:after{
+            content: ""; display: block;
+            clear: both;
+        }
+
+        #wrapper2{
+            width: 960px; margin: 0 auto;
+            border: 1px solid orange;
+        }
+        header{
+            background: yellow; height: 100px;
+            margin: 5px;
+        }
+        nav, article, aside{
+            height: 500px; width: 18%;
+            float: left;
+            margin: 1%;
+        }
+        nav{
+            background: lightgreen;
+        }
+        article{
+            width: 58%;
+            background: #b3d4fc;
+        }
+        aside{
+            background: #e4f7ba;
+            float: right;
+        }
+        footer{
+            background: khaki; height: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>CSS Float 관련 속성</h1>
+<h2>box-sizing 속성</h2>
+<p>CSS 박스의 테두리 영역의 크기를 결정하는 속성.</p>
+<p>일반적으로 블록 요소의 크기는 바깥여백 + 테두리 + 안쪽여백을 합산한 결과값임.</p>
+<p>해당 요소를 만들 때 지정하는 가로/세로의 크기 외에</p>
+<p>여백과 테두리 등의 두께가 합산되어 원래 의도 이상의 크기가 될 수 있음.</p>
+<img src="img/contentbox.png" alt="box-sizing example1">
+<div id="box1"></div>
+<p>마진, 테두리, 여백이 없는 케이스 - 크기 정상</p>
+<div id="box2"></div>
+<p>테두리, 여백이 있는 케이스 - 원래 사이즈에 (padding*2+border*2)가 추가됨</p>
+<div id="box3"></div>
+<p>테두리, 마진이 있는 케이스
+    - 보이지 않는 마진을 제하면 (border*2)만 추가되었지만
+    실제 차지하는 크기는 box2와 같아서 레이아웃에 영향을 줌</p>
+<br>
+<p>border-box 속성을 이용하면 블록요소의 크기를 계산할 때</p>
+<p>바깥여백 + 테두리 + 안쪽여백을 포함해 계산함.</p>
+<p>단, 이렇게 하면 컨텐츠 영역은 실제 설정값보다 작아질 수도 있음.</p>
+<img src="img/borderbox.png" alt="box-sizing example2">
+<div id="box4"></div>
+<p>마진, 테두리, 여백이 없는 케이스 - 크기 정상</p>
+<div id="box5"></div>
+<p>테두리, 여백이 있는 케이스 -
+    box-sizing: border-box를 적용해서 기설정한 크기를 유지함
+    단, 이 경우 내부는 그만큼 줄어들음</p>
+<div id="box6"></div>
+<p>테두리, 마진이 있는 케이스
+    - box-sizing: border-box를 적용해도 마진에는 영향을 주지 않음</p>
+<h2>float</h2>
+<p>일반적인 레이아웃 흐름은 마크업이 작성된 순서에 따라</p>
+<p>요소는 위에서 아래로, 왼쪽에서 오른쪽으로 나열됨.</p>
+<p>하지만, float 이라는 속성을 이용하면 배치흐름에서 벗어나</p>
+<p>페이지의 왼쪽이나 오른쪽으로 이동시킬 수 있음.</p>
+<p>즉, 문서의 흐름과 관계없이 화면배치를 유연하게 할 수 있음.</p>
+<p>복잡한 형태의 레이아웃을 구성하는데 필요한 핵심 속성.</p>
+<img src="img/flaot01.png" alt="float example1"><br>
+<img src="img/float02.png" alt="float example2"><br>
+<div id="box7"></div>
+<div id="article1">
+    행정권은 대통령을 수반으로 하는 정부에 속한다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 국가는 국민 모두의 생산 및 생활의 기반이 되는 국토의 효율적이고 균형있는 이용·개발과 보전을 위하여 법률이 정하는 바에 의하여 그에 관한 필요한 제한과 의무를 과할 수 있다.
+</div>
+<div id="article2">
+    나는 헌법을 준수하고 국가를 보위하며 조국의 평화적 통일과 국민의 자유와 복리의 증진 및 민족문화의 창달에 노력하여 대통령으로서의 직책을 성실히 수행할 것을 국민 앞에 엄숙히 선서합니다.
+</div>
+<div class="clearfix2"></div>
+<h2>clear</h2>
+<p>float 속성이 지정된 요소는 문서의 일반적인 흐름에서 벗어난 상태이기 때문에</p>
+<p>후속요소는 일반적이지 않은 형태가 될 수 있음.</p>
+<p>이러한 문제를 해결하기 위해서 clear 속성을 적용해 특정 요소 이후로는 float의 영향을</p>
+<p>받지 않도록 할 수 있음.</p>
+<div id="box8"></div>
+<div id="wrapper">
+<div id="article3">
+    행정권은 대통령을 수반으로 하는 정부에 속한다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 국가는 국민 모두의 생산 및 생활의 기반이 되는 국토의 효율적이고 균형있는 이용·개발과 보전을 위하여 법률이 정하는 바에 의하여 그에 관한 필요한 제한과 의무를 과할 수 있다.
+</div>
+<div id="article4">
+    나는 헌법을 준수하고 국가를 보위하며 조국의 평화적 통일과 국민의 자유와 복리의 증진 및 민족문화의 창달에 노력하여 대통령으로서의 직책을 성실히 수행할 것을 국민 앞에 엄숙히 선서합니다.
+</div>
+</div>
+<div class="clearfix2"></div>
+<h2>Holy Grail Layout</h2>
+<div id="wrapper2">
+    <header>header</header>
+    <nav>side menu</nav>
+    <article>main</article>
+    <aside>AD</aside>
+    <div class="clearfix2"></div>
+    <footer>footer</footer>
+</div>
+</body>
+</html>
