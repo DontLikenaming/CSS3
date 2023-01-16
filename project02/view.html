@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>view</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/project2.css">
+    <style>
+        form {width: 600px;}
+    </style>
+</head>
+<body>
+<div id="wrapper">
+<header><h1>JSP 프로젝트</h1></header>
+<nav>
+    <ul class="navul">
+      <li>
+        <a href="index.html">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="join.html">
+          회원가입
+        </a>
+      </li>
+      <li>
+        <a href="login.html">
+          로그인
+        </a>
+      </li>
+      <li>
+        <a href="list.html">
+          게시판
+        </a>
+      </li>
+      <li>
+        <a href="myinfo.html">
+          회원정보
+        </a>
+      </li>
+    </ul>
+    <hr class="clear">
+  </nav>
+<main>
+  <h3>게시판 본문글</h3>
+<form>
+  <table>
+    <tr><td><label for="title">제목</label></td><td><input type="text" id="title" name="title"></td></tr>
+    <tr><td><label for="uid">작성자</label></td><td><input type="text" id="uid" name="uid" value="zzyzzy" readonly></td></tr>
+    <tr><td><label for="contents">본문</label></td><td><textarea id="contents" name="contents" rows="7" cols="55"></textarea></td></tr>
+    <tr><td colspan="2"><label></label><button type="button">입력완료</button> <button type="reset">다시입력</button></td></tr>
+  </table>
+</form>
+</main>
+<footer>
+    <div>
+      <hr class="clear">
+      <div class="copy">copyright &copy; 2014. 2017. hoon. All Rights Reserved</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
