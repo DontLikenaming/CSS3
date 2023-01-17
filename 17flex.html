@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS flexbox layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+      .centerme{
+        height: 200px;
+        background: indigo;
+        color: #ebebeb;
+        font-size: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menus a{
+          font-weight: bold;
+          text-decoration: none;
+          outline: none;
+          color: #ebebeb}
+      .menus a:visited{color: #ebebeb}
+      .menus a:hover{color: white}
+      .menus a:active{color: white}
+      .menus{
+          min-height: 44px;
+          background: indigo;
+          color: #ebebeb;
+          padding: 0 10px;
+          font-size: 24px;
+          display: flex;
+          align-items: center;
+          /*flex-direction: row-reverse;*/
+          /*flex-direction: column;*/
+      }
+      .item{margin-right: 16px}
+      /*기존 항목과 마지막 항목간의 배치방식에 따라
+      마진을 자동으로 설정할 수 있음*/
+      .last-item{
+          margin-left: auto
+          /*margin-right: auto*/
+      }
+
+
+    </style>
+</head>
+<body>
+<h1>CSS flexbox layout</h1>
+<h2>개요</h2>
+<p>뷰포트나 요소의 크기가 불명확하거나 동적으로 변할 때에도</p>
+<p>효율적으로 요소를 배치, 정렬, 분산할 수 있는 방법을 제공하는 CSS의 새로운 레이아웃 방식.</p>
+<p>flexbox layout의 장점은 '복잡한 계산 없이 요소의 크기와 순서를 유연하게 배치할 수 있다는 것임.</p>
+<p>정렬, 방향, 순서, 크기 등을 유연하게 조절할 수 있기 때문에</p>
+<p>별도의 분기처리를 줄일 수 있고, CSS만으로 다양한 레이아웃을 구현가능함.</p>
+<p>flexbox froggy : https://flexboxfroggy.com</p>
+
+<img src="img/flexbox01.png" alt="flexbox01">
+
+<h2>수직으로 텍스트 정렬하기</h2>
+<p>display: flex - flex 컨테이너에게 flexbox 레이아웃 적용을 선언함</p>
+<p>align-items - 종축(cross axis)을 기준으로 수직정렬함<br>
+&nbsp;ㄴ flex-start, center, flex-end 등</p>
+<p>justify-content - 횡축(main axis)을 기준으로 수평정렬함<br>
+&nbsp;ㄴ left, center, right 등</p>
+
+<div class="centerme">Hello, Flexbox Layout</div>
+
+<h2>header 메뉴 배치하기</h2>
+<p>flex-direction - 횡축(main axis)을 기준으로 아이템을 어떻게 배치할지 결정<br>
+    &nbsp;ㄴ row(기본값, 가로), reverse-row(가로로 역순), column(세로), reverse-column(역순으로 세로) 등</p>
+<div>
+    <header class="menus">
+        <a href="#" class="item">Home</a>
+        <a href="#" class="item">About Us</a>
+        <a href="#" class="item">Products</a>
+        <a href="#" class="item">Policy</a>
+        <a href="#" class="last-item">Contact Us</a>
+    </header>
+</div>
+</body>
+</html>
