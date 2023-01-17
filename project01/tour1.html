@@ -10,13 +10,21 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/main.css">
     <style>
-      #container{width: 1200px; margin: 0 auto;
-      border: 1px solid red;
+      #container{
+          width: 1200px;
+          margin: 0 auto;
       }
-      .clear{clear: both;}
-      header {height: 100px; background: #cccccc;}
-      header h1{margin: 0;}
+      .clearfix2:after{
+          content: "";
+          display: block;
+          clear: both;
+      }
 
+      header {
+          height: 100px;
+          background: #cccccc;
+      }
+      header h1{margin: 0;}
       nav > ul{
           float:right;
           width: 800px;
@@ -30,39 +38,92 @@
           padding: 10px 65px;
           font-weight: bold;
       }
-
       nav > ul > ul {display: none;}
 
-      .clearfix2:after{
-          content: ""; display: block;
-          clear: both;
-      }
+      main{border: 1px solid black; height: 570px;}
 
-      .rotateimg{}
       .none{display: none;}
-
-      a:link{color: white; text-decoration: none;
-      font-weight: bold; position: relative}
-
+      a:link{
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+          position: relative
+      }
       .rotateimg a span{
           background: rgba(100, 100, 100, 0.5);
-          padding: 5px 15px; font-size: 20px;
-          position: absolute; top:50%; left: 39%;
+          padding: 5px 15px;
+          font-size: 20px;
+          position: absolute;
+          top:50%;
+          left: 39%;
           text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
-
       }
 
-      #notice, #gallary {float: left; margin-right: 100px;}
-      .bb {width: 300px; padding: 0;}
-      .bb span{float: right;}
+      section:last-child{height: 300px;}
+      .notice, .gallary, .golink{
+          width: 395px;
+      }
+      .notice h4, .gallary h4{
+          font-size: 20px;
+          border-bottom: 3px solid orange;
+          margin: 10px 10px;
+          padding-bottom: 10px;
+      }
+      .notice table{width: 370px;
+          margin: 0 10px;
+          padding: 10px 0;
+          border-collapse: collapse;
+      }
+      .notice td {padding: 5px 0}
+      .notice td:last-child{text-align: right}
+      .notice tr:nth-child(even){background: orange;}
 
-      .cc {float: left;}
+      .notice{float: left;}
+      .gallary{float: left;}
+      .gallary ul{
+          list-style: none;
+          margin: 0 0 0 10px;
+          padding: 0;
+      }
+      .gallary ul li{display: inline-block; padding: 10px;}
+      .golink{
+          float: right;
+          position: relative;
+      }
+      .golink img{margin: 10px 0 10px -15px}
+      .golink a span{
+          background: rgba(100, 100, 100, 0.5);
+          font-size: 20px;
+          position: absolute;
+          top:20%;
+          left: 39%;
+      }
 
-      #bottom {height: 56px; margin-top: 20px;}
-      #copy{float: left;}
-      .dd {float: right;}
-      #sitelist{float: right;}
-      #list{width: 200px;}
+      footer{
+          height: 100px;
+          background: #cccccc;
+      }
+      .copy{
+          width: 600px;
+          text-align: center;
+          float: left;
+          font-size: 20px;
+          line-height: 100px;
+          font-weight: bold;
+      }
+      .sns_site{
+          float: right; width: 250px;
+      }
+      .sns{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+      .sns li{
+          display: inline-block;
+          padding: 5px 12px;
+      }
+      .site{width: 250px;}
     </style>
 </head>
 <body>
@@ -99,83 +160,86 @@
       </ul>
     </ul>
 </nav>
-<main>
+<main class="clearfix2">
     <section class="rotateimg">
-    <div class="clear">
-      <div class="main_image">
+      <div>
       <a href="#">
         <img src="img/Slides/img1.jpg">
-        <span class="Mspan1">국내여행의 대표, 한국투어</span>
+        <span>국내여행의 대표, 한국투어</span>
       </a>
       </div>
-      <div class="none main_image">
+      <div class="none">
       <a href="#">
         <img src="img/Slides/img2.jpg">
-        <span class="Mspan2">해외여행 예약, 한국투어</span>
+        <span>해외여행 예약, 한국투어</span>
       </a>
       </div>
-      <div class="none main_image">
+      <div class="none">
       <a href="#">
         <img src="img/Slides/img3.jpg">
-        <span class="Mspan3">편리한 렌터카, 한국투어</span>
+        <span>편리한 렌터카, 한국투어</span>
       </a>
       </div>
-    </div>
     </section>
 
     <section>
-    <div class="clear"></div>
-    <div id="notice">
-      <h4>공지사항</h4>
-        <div class="bb">
-          <label>한국투어 홈페이지 개편 안내</label>
-          <span>2022.03.01</span>
+        <div class="notice">
+          <h4>공지사항</h4>
+          <table>
+            <tr>
+              <td>한국투어 홈페이지 개편 안내</td>
+              <td>2022.03.01</td>
+            </tr>
+            <tr>
+              <td>여행 이벤트 상품을 드립니다.</td>
+              <td>2022.03.01</td>
+            </tr>
+            <tr>
+              <td>렌트 이용 시 주의해주세요.</td>
+              <td>2022.03.01</td>
+            </tr>
+            <tr>
+              <td>제주도 여행권 할인 안내</td>
+              <td>2022.03.01</td>
+            </tr>
+          </table>
         </div>
-        <div class="bb">
-          <label>여행 이벤트 상품을 드립니다.</label>
-          <span>2022.03.01</span>
+
+
+        <div class="gallary">
+          <h4>갤러리</h4>
+            <ul>
+                <li><img src="img/Contents/gallery1.jpg"></li>
+                <li><img src="img/Contents/gallery2.jpg"></li>
+                <li><img src="img/Contents/gallery3.jpg"></li>
+            </ul>
         </div>
-        <div class="bb">
-          <label>렌트 이용 시 주의해주세요.</label>
-          <span>2022.03.01</span>
+
+        <div class="golink">
+          <a href="#">
+            <img src="img/Contents/shortcut.jpg">
+            <span>바로가기</span>
+          </a>
         </div>
-        <div class="bb">
-          <label>제주도 여행권 할인 안내</label>
-          <span>2022.03.01</span>
-        </div>
-    </div>
-    <div id="gallary">
-      <h4>갤러리</h4>
-        <div class="cc"><img src="img/Contents/gallery1.jpg"></div>
-        <div class="cc"><img src="img/Contents/gallery2.jpg"></div>
-        <div class="cc"><img src="img/Contents/gallery3.jpg"></div>
-    </div>
-    <div class="main_image">
-      <a href="#">
-        <img src="img/Contents/shortcut.jpg">
-        <span class="Mspan4">바로가기</span>
-      </a>
-    </div>
-    </section>
+   </section>
 </main>
-<footer>
-  <div class="clear"></div>
-    <div id="bottom">
-      <div id="copy">
+<footer class="clearfix2">
+      <div class="copy">
         COPYRIGHT &copy; by WEBDESIGN. ALL RIGHTS RESERVED
       </div>
-        <div class="dd"><img src="img/Footer/sns1.jpg"></div>
-        <div class="dd"><img src="img/Footer/sns2.jpg"></div>
-        <div class="dd"><img src="img/Footer/sns3.jpg"></div>
-    </div>
-    <div id="sitelist">
-    <select name="sitelist" id="list">
+    <div class="sns_site">
+        <ul class="sns">
+            <li class="dd"><img src="img/Footer/sns1.jpg"></li>
+            <li class="dd"><img src="img/Footer/sns2.jpg"></li>
+            <li class="dd"><img src="img/Footer/sns3.jpg"></li>
+        </ul>
+
+    <select name="sitelist" class="site">
       <option>패밀리 사이트1</option>
       <option>패밀리 사이트2</option>
       <option>패밀리 사이트3</option>
     </select>
     </div>
-
 </footer>
 </div>
 </body>
