@@ -14,6 +14,9 @@
           href="css/smallone.css">
 
     <style>
+    #dec{margin: 0;}
+    #size{margin: 0;}
+
     /*@media (조건) {적용할 스타일}*/
     @media (max-width: 1049px) {
       .smallone1{background: yellow;}
@@ -61,11 +64,13 @@
 <h2>미디어 쿼리</h2>
 <p>다양한 장치에서도 웹 브라우징이 가능하게 되면서 뷰포트 너비에 따라 유연하게 컨텐츠를 배치하는 기술이 도입됨.</p>
 <p>미디어 쿼리는 단말기 유형, 화면 해상도, 뷰포트 너비에 따라 웹사이트 스타일을 적용할 수 있게 해주는 기술임.</p>
-
-<h2 id="size">현재 화면 넓이 출력</h2>
+<br>
+<h2 id="dec">현재 화면 너비(px)</h2>
+<h2 id="size"></h2>
 <script>{
 
     var size = document.getElementById("size");
+    size.textContent = innerWidth;
 
     window.onresize = function(event){
         var innerWidth = window.innerWidth;

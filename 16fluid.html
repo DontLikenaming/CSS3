@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 유동 웹 디자인</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .wrapper{
+            border: 1px solid blue;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header{
+            width: 100%;
+            height: 130px;
+            background: #038c5a;
+        }
+        .main, .left, .right{
+            height: 625px;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        /*고정 너비 설정*/
+/*        .main{
+            width: 898px;
+            background: #bbbf90;
+        }
+        .left, .right{
+            width: 245px;
+            background: #03a66a;
+        }*/
+        /*유동 너비 설정*/
+        .main{
+            width: 57.5%;
+            background: #bbbf90;
+        }
+        .left, .right{
+            width: 20%;
+            background: #03a66a;
+        }
+
+
+        footer{
+            width: 100%;
+            height: 200px;
+            background: #025059;
+        }
+    </style>
+</head>
+<body>
+<h1>CSS 유동 웹 디자인</h1>
+<h2>개요</h2>
+<p>유동(fluid) 웹 디자인은 페이지 내 요소들의 너비를 화면 또는 브라우저 창의 너비에 따라 비례해서 나타내는 것을 의미함.</p>
+<p>즉, 현재 뷰포트의 너비에 따라 확장되거나 축소된다는 것을 의미함.</p>
+<p>스크린의 크기가 각기 다른 여러 환경에서도 웹사이트의 사용성을 높이는데 유용함.</p>
+<p>이 것을 잘 활용하면 스크린에 상관없이 웹사이트의 레이아웃이 언제나 비슷하게 보여지도록 할 수 있음.</p>
+<p>일관된 레이아웃은 가능한 많은 방문자에게 사용성을 보장해주면서 UI/UX가 향상되도록 도와줌</p>
+
+<img src="img/fluid01.png" alt="flaod01" width="35%"><br>
+<img src="img/fluid02.png" alt="flaod02" width="20%"><br>
+ 어떤 크기의 화면이든 같은 레이아웃을 유지한다.
+
+<hr>
+
+<div class="wrapper">
+    <header></header>
+    <main>
+        <aside class="left"></aside>
+        <section class="main"></section>
+        <aside class="right"></aside>
+    </main>
+    <footer></footer>
+</div>
+
+</body>
+</html>
