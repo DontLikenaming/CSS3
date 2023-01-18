@@ -138,3 +138,4 @@ https://www.google.com
 
 <!--미리보기에선 작동하지 않음-->
 $a^2=b^2+c^2$
+$$x=-b\pm{b^2-4ac} \over 2a$$
