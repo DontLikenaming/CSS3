@@ -12,7 +12,7 @@
         /*외각선 테두리 표시, 너비 설정, 가운데 정렬*/
         /*외각선 테두리 표시, 너비 설정, 가운데 정렬*/
         #container{
-            border: 1px solid red;
+            border: 2px solid black;
             width: 65%;
             margin: 0 auto;
         }
@@ -74,19 +74,17 @@
             border: none gray;
         }
         /*--------------------------------------------------------*/
-        main{
-            border: 1px solid darkviolet
-        }
         section:first-child{
-            border:1px solid darkblue; position: relative;
+            position: relative;
 
         }
         section:first-child aside {
-            border:1px solid darkblue; width:25%;
+            width:25%;
+            padding: 5px;
         }
         section:first-child aside ul{
             list-style:none; padding: 0; margin: 0;
-            border: 1px solid black;
+            border: 3px solid black;
         }
         section:first-child aside li{
             border-bottom: 2px solid black; padding: 8px 10px;
@@ -95,8 +93,8 @@
             border:0;
         }
         section:first-child div{
-            border:2px solid black; width:74%; height: 99%;
-            position: absolute; right: 0; top:0;
+            border:3px solid black; width:73%; height: 94.8%;
+            position: absolute; right: 5px; top:5px;
         }
         section:first-child div p{
             position: absolute; top: 35%; left: 30%;
@@ -114,9 +112,6 @@
             margin: 5px;
         }
         /*--------------------------------------------------------*/
-        section:last-child{
-            border:2px solid black;
-        }
         section:last-child ul{
             list-style: none; padding: 0; margin: 5% 0;
         }
@@ -132,8 +127,42 @@
             display: block; text-align: center;
 
         }
+        /*링크에 대한 스타일 지정*/
+        a:link{
+            color: black;;
+        }
+        a:visited{
+            color: black;
+        }
+        a:hover{
+            color: red;
+        }
+        a:active{
+            color: orange;
+        }
+        /*--------------------------------------------------------*/
+        footer{
+            border-top: 1px solid black;
+            position: relative;
+        }
+        footer ul{
+            list-style: none; display: inline-block;
+            vertical-align: top;
+        }
+        footer ul:first-child{
+            margin-left: 12px;
+        }
+        footer ul li{
 
-
+        }
+        footer ul li:first-child h3{
+            margin: 0;
+        }
+        footer div{
+            text-align: center;
+            border-top: 2px solid black;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -220,7 +249,6 @@
             </section>
         </main>
         <footer>
-            <div>
             <ul>
                 <li><h3>ABOUT US</h3></li>
                 <li>Company</li>
@@ -242,7 +270,6 @@
                 <li>Site map</li>
             </ul>
             <div>Copyright &copy; 2023. ALL Rights Reserved.</div>
-            </div>
         </footer>
     </div>
 </body>

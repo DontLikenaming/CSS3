@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>CSS flexbox layout</title>
@@ -44,8 +44,106 @@
           margin-left: auto
           /*margin-right: auto*/
       }
+      /*------------------------------------------------------------*/
+      .container1{
+          height: 200px;
+          width: 100%;
+          background: indigo;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+      }
+      .item2{
+          background: #34005b;
+          height: 100px;
+          width: 200px;
+          color: white;
+      }
+      /*------------------------------------------------------------*/
+      .container2{
+          background: indigo;
+          color: black;
+          display: flex;
+          flex-direction: column;
+      }
+      .item3{
+          font-size: 30px;
+          text-shadow: 0 1px #999999, 0 1px #cccccc, 1px 0 #cccccc, 1px 0 #cccccc;
+          padding: 10px;
+          min-height: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      header.item3 {
+            background-color: #105b63;
+            order:1;
+        }
+      main.item3 {
+          background-color: #fffad5;
+          order:2;
+      }
+      aside.item3 {
+          background-color: #ffd34e;
+          order:3;
+      }
+      aside.aside-two {
+          background-color: #db9e36;
+          order:4;
+      }
+      footer.item3 {
+          background-color: #bd4932;
+          order:5;
+      }
+      /*------------------------------------------------------------*/
+      .container3{
+          height: 100px;
+          width: 100%;
+          background: indigo;
+          display: flex;
+          align-items: center;
 
+      }
+      /*------------------------------------------------------------*/
+      /*width는 고정크기, 내용이 많으면 자동으로 줄바꿈
 
+      flex-basis: 가변크기, 내용이 많으면 자동으로 너비가 길어짐
+      flex-grow: 기본적으로는 항목의 내용을 제외한 나머지 공간(여백)을
+                 기준으로 항목의 너비를 비율로 표시
+                 단, flex-grow 속성은 flex-basis 속성에 영향을 받기도 함
+      flex-shrink: 항목의 내용을 기준으로 항목의 너비를 비율로 표시
+                    단, flex-basis 속성에 영향을 받기도 함*/
+      /*상기한 속성들은 축약형으로도 작성 가능
+      ex)flex: (grow) (shrink) (basis); */
+      .item4{
+          background: #34005b;
+          height: 80px;
+          /*width: 100px;*/
+          color: white;
+          margin: 5px;
+          /*flex-basis: 100px;*/
+          /*flex-grow:1;*/
+          /*flex-shrink: 1;*/
+          flex: 1 0 200px;
+      }
+      /*------------------------------------------------------------*/
+      /*grow, basis, shrink를 이용해서 holy grail layout 적용하기*/
+      /*flex-wrap: 항목이 뷰포트를 벗어날 때(overflow)의 처리*/
+      /*flex-flow를 이용해 direction과 wrap을 축약해서 사용 가능*/
+      /*ex) flex-flow: (direction) (wrap);*/
+      .container4{
+          width: 50%;
+          display: flex;
+         /*flex-direction: row;
+          flex-wrap: wrap;*/
+          flex-flow: row wrap;
+      }
+      .item5{text-align: center}
+      .hdr{flex:0 0 100%; order: 1}
+      .ftr{flex:0 0 100%; order: 5}
+      .asd1{flex:0 0 30%; order: 2}
+      .main{flex:0 0 40%; order: 3}
+      .asd2{flex:0 0 30%; order: 4}
     </style>
 </head>
 <body>
@@ -81,5 +179,57 @@
         <a href="#" class="last-item">Contact Us</a>
     </header>
 </div>
+
+<h2>flex item 배치하기</h2>
+<p>flex 컨테이너 내에 포함된 항목들을 일정 간격으로 배치하려면 justify-content 속성을 사용.<br>
+<p> space-between : 항목들을 일정한 간격으로 배치(아이템이 화면 양쪽에 배치되도록 함)</p>
+<p>space-around : 항목 주위에 일정한 간격으로 배치</p>
+<p>space-evenly : 항목 양 끝에 일정한 간격으로 배치</p>
+
+<div class="container1">
+    <div class="item2">Item One</div>
+    <div class="item2">Item Two</div>
+    <div class="item2">Item three</div>
+</div>
+
+<h2>항목 순서 지정하기</h2>
+<p>각 항목들의 시각적 나열 순서를 결정할 때는 order라는 속성을 이용할 수 있다.</p>
+<p>숫자값이 낮을수록 앞(먼저)에 배치되고 크면 뒤(나중)에 배치된다.</p>
+
+<!--정상배치-->
+<!--<div class="container2">
+    <header class="item3">Header</header>
+    <aside class="item3">Side one</aside>
+    <main class="item3">Content</main>
+    <aside class="item3 aside-two">Side Two</aside>
+    <footer class="item3">Footer</footer>
+</div>-->
+
+<div class="container2">
+    <aside class="item3">Side one</aside>
+    <aside class="item3 aside-two">Side Two</aside>
+    <main class="item3">Content</main>
+    <footer class="item3">Footer</footer>
+    <header class="item3">Header</header>
+</div>
+
+<h2>항목들 크기 자유자제로 다루기</h2>
+
+<div class="container3">
+    <div class="item4">Item One</div>
+    <div class="item4">Item Two Two Two Two Two </div>
+    <div class="item4">Item three</div>
+</div>
+
+<h2>grow, basis, shrink 적용하기</h2>
+
+<div class="container4">
+    <header class="item5 hdr">Header</header>
+    <aside class="item5 asd1">Side one</aside>
+    <main class="item5 main">Content</main>
+    <aside class="item5 asd2">Side Two</aside>
+    <footer class="item5 ftr">Footer</footer>
+</div>
+
 </body>
 </html>
