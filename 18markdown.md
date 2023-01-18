@@ -138,4 +138,4 @@ https://www.google.com
 
 <!--미리보기에선 작동하지 않음-->
 $a^2=b^2+c^2$
-$$x=-b\pm\sqrt{b^2-4ac}\over2a$$
+$$x={-b\pm\sqrt{b^2-4ac}\over2a}$$
