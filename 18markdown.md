@@ -138,4 +138,4 @@ https://www.google.com
 
 <!--미리보기에선 작동하지 않음-->
 $a^2=b^2+c^2$
-$$x=-b\pm\surd{b^2-4ac} \over 2a$$
+$$x=-b\pm\surd{b^2-4ac}\over2a$$
